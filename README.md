@@ -1,4 +1,4 @@
-# FoodTableJP-preprocessing
+# 成分表前処理コード
 日本食品標準成分表の食材名を前処理するリポジトリです．
 [日本食品標準成分表（八訂）増補2023年](https://www.mext.go.jp/a_menu/syokuhinseibun/mext_00001.html) に対応しています．
 今の食品成分表の食材の表記は分類の情報も混ざっているので，分析等では非常に使いずらいです．
