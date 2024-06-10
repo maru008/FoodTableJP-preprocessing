@@ -13,24 +13,21 @@
 ├── README.md
 ├── data
 │   └── input
-│       ├── mtx_01
-│       │   └── 20230428-mxt_kagsei-mext_00001_012.xlsx
-│       ├── mtx_02
-│       │   ├── 20230428-mxt_kagsei-mext_00001_022.xlsx
-│       │   ├── 20230428-mxt_kagsei-mext_00001_023.xlsx
-│       │   ├── 20230428-mxt_kagsei-mext_00001_024.xlsx
-│       │   └── 20230428-mxt_kagsei-mext_00001_025.xlsx
-│       ├── mtx_03
-│       │   ├── 20230428-mxt_kagsei-mext_00001_032.xlsx
-│       │   ├── 20230428-mxt_kagsei-mext_00001_033.xlsx
-│       │   └── 20230428-mxt_kagsei-mext_00001_034.xlsx
-│       └── mtx_04
-│           ├── 20230428-mxt_kagsei-mext_00001_042.xlsx
-│           ├── 20230428-mxt_kagsei-mext_00001_043.xlsx
-│           └── 20230428-mxt_kagsei-mext_00001_044.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_012.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_022.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_023.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_024.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_025.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_032.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_033.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_034.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_042.xlsx
+│       ├── 20230428-mxt_kagsei-mext_00001_043.xlsx
+│       └── 20230428-mxt_kagsei-mext_00001_044.xlsx
 ├── requirements.txt
 └── src
-    └── preprocessing.py
+    ├── preprocessing.py
+    └── utils.py
 ```
 
 その後，以下のコマンドを実行することでdata/outputファイルに保存されます．(Python 3.10.10)
@@ -40,6 +37,11 @@ python src/preprocessing.py
 ```
 
 正しく実行できればdata/outputに以下のファイル群が作成できます．
+```
+│   └── output
+│       ├── food_categories_all.csv(食材名のカテゴリ名を分離した結果)
+│       └── food_nutrition_all.csv(カラム名を栄養素にした結果)
+```
 
 ---
 ### 備考
