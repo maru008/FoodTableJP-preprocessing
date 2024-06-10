@@ -139,6 +139,10 @@ column_mapping = {
 data = pd.read_excel(input_path, sheet_name="表全体", header=[4],skiprows=[5]).rename(columns=column_mapping)
 all_data = df_merge(all_data, data)
 
+for col in all_data.columns:
+    if col.startswith('note_'):
+        all_data[col] = all_data[col].str.replace('\n', '')
+
 all_data.to_csv(output_path/"food_nutrition_all.csv", index=False)
 
 food_categories = preprocessing_table(all_data)
