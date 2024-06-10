@@ -1,0 +1,2 @@
+# FoodTableJP-preprocessing
+日本食品標準成分表の食材名を前処理するリポジトリ
