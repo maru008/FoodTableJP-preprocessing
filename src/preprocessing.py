@@ -2,16 +2,9 @@ import os
 import yaml
 from pathlib import Path
 import pandas as pd
-from utils import preprocessing_table
+from utils import preprocessing_table, read_yaml_config
 
-def read_yaml_config(config_path):
-    with open(config_path, 'r') as stream:
-        try:
-            config = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-            config = None
-    return config
+
 
 
 def df_merge(df1,df2):

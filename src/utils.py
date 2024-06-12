@@ -1,8 +1,17 @@
 import os
+import yaml
 import re
 import pandas as pd
 from tqdm import tqdm
 
+def read_yaml_config(config_path):
+    with open(config_path, 'r') as stream:
+        try:
+            config = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+            config = None
+    return config
 
 def extract_categories(input_text):
     categories = ["", "", "", "", "", ""]
@@ -30,8 +39,8 @@ def extract_categories(input_text):
         categories[4] = parts[1]
     if len(parts) > 2:
         saibun_parts = parts[2:]
-        categories.extend(saibun_parts)  # Extend categories to include all saibun parts
-
+        categories[5] = saibun_parts[0]
+        categories.extend(saibun_parts[1:])  # Extend categories to include all saibun parts
     return categories
 
 def preprocessing_table(nutrition_data: pd.DataFrame):
