@@ -1,6 +1,7 @@
 # custom
 data/
-src/*ipynb
+src/*ipyn
+config.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

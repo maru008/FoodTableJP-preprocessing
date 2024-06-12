@@ -25,12 +25,15 @@
 │       ├── 20230428-mxt_kagsei-mext_00001_043.xlsx
 │       └── 20230428-mxt_kagsei-mext_00001_044.xlsx
 ├── requirements.txt
+├── config.yaml
 └── src
     ├── preprocessing.py
     └── utils.py
 ```
 
-その後，以下のコマンドを実行することでdata/outputファイルに保存されます．(Python 3.10.10)
+config.yamlにデータの入力の場所と出力の場所を書いてください．(入力例はcondig_ex.yamlに書かれています．)
+
+その後，以下のコマンドを実行することでoutputファイルに保存されます．(Python 3.10.10)
 
 ```
 python src/preprocessing.py

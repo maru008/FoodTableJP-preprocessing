@@ -1,7 +1,17 @@
 import os
+import yaml
 from pathlib import Path
 import pandas as pd
 from utils import preprocessing_table
+
+def read_yaml_config(config_path):
+    with open(config_path, 'r') as stream:
+        try:
+            config = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+            config = None
+    return config
 
 
 def df_merge(df1,df2):
@@ -11,10 +21,13 @@ def df_merge(df1,df2):
         result = pd.merge(df1, df2, on=['food_group', 'food_code', 'reference_number', 'food_name'], how='outer')
     return result
 
-nutrition_data_path = Path("data/input/")
-output_path = Path("data/output/")
+config_path = 'config.yaml'
+config = read_yaml_config(config_path)
 
-if not os.path.exists("data/output/"):
+nutrition_data_path = Path(config["Data_path"]["Input_data_path"])
+output_path = Path(config["Data_path"]["Output_data_path"])
+
+if not os.path.exists(output_path):
     os.makedirs(output_path)
 
 # concat_key = ["food_group", "food_code", "reference_number", "food_name","WATER"]
