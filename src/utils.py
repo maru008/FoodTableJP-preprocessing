@@ -47,9 +47,8 @@ def preprocessing_table(nutrition_data: pd.DataFrame):
     all_results = []
     max_columns = 0
     for index,row in tqdm(nutrition_data.iterrows(),total=nutrition_data.shape[0]):
-        result = [str(int(float(row.food_code)))]
         food_name = row["food_name"]
-        
+        result = [str(int(float(row.food_code))),food_name]
         res = extract_categories(food_name)
         result.extend(res)
         all_results.append(result)
@@ -57,7 +56,7 @@ def preprocessing_table(nutrition_data: pd.DataFrame):
             max_columns = len(res)
 
     # Create column names based on max_columns
-    column_names = ["食品番号","類区分", "副分類", "大分類", "中分類", "小分類"] + [f"細分{i+1}" for i in range(max_columns - 5)]
+    column_names = ["食品番号","食品名","類区分", "副分類", "大分類", "中分類", "小分類"] + [f"細分{i+1}" for i in range(max_columns - 5)]
 
     # Create DataFrame with dynamic columns
     df_results = pd.DataFrame(all_results, columns=column_names)
