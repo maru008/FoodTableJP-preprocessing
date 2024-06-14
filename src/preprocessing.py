@@ -5,13 +5,16 @@ import pandas as pd
 from utils import preprocessing_table, read_yaml_config
 
 
-
+common_colums = ["WATER","PROTCAA","PROT-","FATNLEA","FAT-","CHOAVLM","CHOAVL","OA"]
 
 def df_merge(df1,df2):
-    if 'WATER' in df1.columns and 'WATER' in df2.columns:
-        result = pd.merge(df1, df2, on=['food_group', 'food_code', 'reference_number', 'food_name', 'WATER'], how='outer')
-    else:
-        result = pd.merge(df1, df2, on=['food_group', 'food_code', 'reference_number', 'food_name'], how='outer')
+    marge_trg_columns = ['food_group', 'food_code', 'reference_number', 'food_name']
+    
+    for com_col in common_colums:
+        if com_col in df1.columns and com_col in df2.columns:
+           marge_trg_columns.append(com_col)
+    
+    result = pd.merge(df1, df2, on=marge_trg_columns, how='outer')
     return result
 
 config_path = 'config.yaml'
@@ -149,7 +152,8 @@ for col in all_data.columns:
     if col.startswith('note_'):
         all_data[col] = all_data[col].str.replace('\n', '')
 
-all_data.to_csv(output_path/"food_nutrition_all.csv", index=False)
+df_cleaned = all_data.groupby('food_code').apply(lambda group: group.ffill().bfill().iloc[0]).reset_index(drop=True)
+df_cleaned.to_csv(output_path/"food_nutrition_all.csv", index=False)
 
 food_categories = preprocessing_table(all_data)
 food_categories.to_csv(output_path/"food_categories_all.csv", index=False)

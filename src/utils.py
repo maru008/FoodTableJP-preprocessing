@@ -59,6 +59,6 @@ def preprocessing_table(nutrition_data: pd.DataFrame):
     column_names = ["食品番号","食品名","類区分", "副分類", "大分類", "中分類", "小分類"] + [f"細分{i+1}" for i in range(max_columns - 5)]
 
     # Create DataFrame with dynamic columns
-    df_results = pd.DataFrame(all_results, columns=column_names)
+    df_results = pd.DataFrame(all_results, columns=column_names).drop_duplicates(subset=["食品番号"])
     return df_results
 
