@@ -1,5 +1,7 @@
 # custom
-data/
+data/input/
+data/output/
+
 src/*ipynb
 config.yaml
 

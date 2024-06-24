@@ -46,6 +46,10 @@ python src/preprocessing.py
 │       └── food_nutrition_all.csv(カラム名を栄養素にした結果)
 ```
 
+### アノテーションデータ
+[こちらに](./data/README.md)詳しい説明があります．
+food_nutrition_all.csv に登場する栄養素のカラム名に対して，その対応付をしたものになります．
+
 ---
 ### 備考
 プログラムの修正等は issue にお願いします．

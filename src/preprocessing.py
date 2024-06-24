@@ -33,10 +33,13 @@ column_mapping = {
     "Unnamed: 0":"food_group",
     "Unnamed: 1":"food_code",
     "Unnamed: 2":"reference_number",
+    "Unnamed: 14":"CHOAVLM*",
+    "Unnamed: 17":"CHOAVLDF-*",
     "成分識別子":"food_name",
     "Unnamed: 61":"note_012"
 }
 all_data = pd.read_excel(input_path, sheet_name="表全体", header=[11]).rename(columns=column_mapping)
+all_data = all_data.drop(columns=["Unnamed: 32"])
 # -----------------------------------------------------------
 input_path = nutrition_data_path/"20230428-mxt_kagsei-mext_00001_022.xlsx"
 column_mapping = {
@@ -132,7 +135,7 @@ column_mapping = {
     "Unnamed: 1":"food_code",
     "Unnamed: 2":"reference_number",
     "成分識別子":"food_name",
-    "Unnamed: 17":"note_043"
+    "Unnamed: 13":"note_043"
 }
 data = pd.read_excel(input_path, sheet_name="表全体", header=[7],skiprows=[8]).rename(columns=column_mapping)
 all_data = df_merge(all_data, data)
