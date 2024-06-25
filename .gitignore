@@ -1,7 +1,7 @@
 # custom
 data/input/
 data/output/
-
+data/.DS_Store
 src/*ipynb
 config.yaml
 
