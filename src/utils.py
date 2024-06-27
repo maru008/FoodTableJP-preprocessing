@@ -39,8 +39,7 @@ def extract_categories(input_text):
         categories[4] = parts[1]
     if len(parts) > 2:
         saibun_parts = parts[2:]
-        categories[5] = saibun_parts[0]
-        categories.extend(saibun_parts[1:])  # Extend categories to include all saibun parts
+        categories[5] = ' '.join(saibun_parts)
     return categories
 
 def preprocessing_table(nutrition_data: pd.DataFrame):
@@ -56,7 +55,7 @@ def preprocessing_table(nutrition_data: pd.DataFrame):
             max_columns = len(res)
 
     # Create column names based on max_columns
-    column_names = ["食品番号","食品名","類区分", "副分類", "大分類", "中分類", "小分類"] + [f"細分{i+1}" for i in range(max_columns - 5)]
+    column_names = ["食品番号","食品名","類区分", "副分類", "大分類", "中分類", "小分類", "細分"]
 
     # Create DataFrame with dynamic columns
     df_results = pd.DataFrame(all_results, columns=column_names).drop_duplicates(subset=["食品番号"])
